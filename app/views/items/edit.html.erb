@@ -1,0 +1,15 @@
+<%= form_with model: @item do |form| %>
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name    %>
+    </div>
+  
+    <div>
+      <%= form.label :quantity %><br>
+      <%= form.text_field :quantity %>
+    </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>

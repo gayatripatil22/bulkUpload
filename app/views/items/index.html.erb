@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Items</h1>
+<%=
+  link_to 'Download as Excel',
+  items_path(format: :xlsx)
+%>
+<%=
+  link_to 'Upload from Excel',
+  items_imports_new_path
+%>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>edit</th>
+      <th>delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to "destroy", item_path(item), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure want to delete?"
+        } %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', items_imports_new_path %>
